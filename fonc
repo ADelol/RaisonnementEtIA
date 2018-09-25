@@ -21,7 +21,20 @@
 		nil
 	(aLafin (car l)(inverse(cdr l)))
 )
-
-(
 )
 
+
+
+(defun somme(l)
+	(cond ((null l) 0)
+		((Numberp (car l))(+ (car l)(somme (cdr l))))
+		(T (somme (cdr l)))
+	)
+)
+
+(defun remplace(x y l)
+	(cond ((null l) nil)
+		((eq (car l) x)(cons y (remplace x y (cdr l))))
+		(T (cons (car l)(remplace x y (cdr l))))
+)
+)
