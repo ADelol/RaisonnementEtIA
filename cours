@@ -17,11 +17,11 @@
 	(remove-if-not(infan n) l )
 )
 
+
+
 (defun multnum(l)
-	(cond ((null l) 1)
-		((Numberp (car l))(apply '* ((car l)(multnum (cdr l)))))
-		(T (multnum (cdr l)))
-	)
+	(mapcar(lambda(x)(* x ))l)
 )
 
-
+(defun mult(l)
+)
