@@ -1,0 +1,27 @@
+(defun sup(x l)
+  (cond ((null l) nil)
+           ((eq (car l) x) (sup x (cdr l)) )
+           (T (cons (car l) (sup x (cdr l)))
+) ))
+
+
+
+(defun alt(l)
+	(if (null l) 
+		NIL
+	(cons (CAR l)(alt (cdr(cdr l)))))
+)
+
+(defun aLaFin( x l)
+	(append l (cons x ()))
+)
+
+(defun inverse(l)
+	(if (null l) 
+		nil
+	(aLafin (car l)(inverse(cdr l)))
+)
+
+(
+)
+
