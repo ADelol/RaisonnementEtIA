@@ -1,1 +1,48 @@
-Ajout
+Exercice 1 : 
+	(car  ' (a b c) )  => A
+	(cdr '(a b c)) => (B C)
+	(cdr '(a)) => NIL
+	(car (a b c)) => undefined function A
+	(car '((+ 2 3) (+ 6 7) ) ) => (+ 2 3)
+	(car ((+ 2 3) (+ 6 7) ) ) => EVAL: (+ 2 3) is not a function name; try using a symbol instead
+
+	(car (list (+ 2 3) (+ 6 7) ) ) => 5
+	(cadar (cdr '((a b) (a (b c)) d) ) ) => (B C)
+	(caadr '((a b) (a (b c)) d) ) => A
+	(cons '((a b) c) ' (a (b c)) ) => (((A B) C) A (B C))
+	(append '(h j) () ' ( o p)) => (H J O P)
+	(append  ' ((a b)(c d)) ' (e f)) => ((A B) (C D) E F)
+	(atom (cadr '(a(b) c (d)))) => NIL
+	(listp (car '((a b c) d e) )) => T
+	(null 'a) => NIL
+	(equal  '(a (b c))  '(a (b) c)) => NIL
+	(member  'a '((a) b) ) => NIL
+	(member  'a 'a) =>  MEMBER: A proper list must not end with A
+
+	(member  'a '(1 a 2 b)) => (A 2 B)
+	(+ 2 3)) ;Que provoque la présence d’une parenthèse fermante supplémentaire ? => *** - READ de
+       #<INPUT CONCATENATED-STREAM #<INPUT STRING-INPUT-STREAM>
+         #<IO TERMINAL-STREAM>>
+      : un object ne peut pas commencer par #\)
+
+	(car  '(a b)  ;Que provoque le manque de parenthèse fermante ? La commande ne s'effectue pas car l'interpréteur attend la fin de la commande
+	(nth 3 ' (1 2 3 4 5)) ; que fait la fonction nth? Renvoie le 4ème nombre de la liste (qui est à l'indice 3 car la liste commence à 0)
+	(nthcdr  3 ' (1 2 3 4 5)) ; que fait la fonction nthcdr ? Renvoie sous forme de liste de ce qui est à l'indice 3 de la liste et ce qui est à la suite de l'indice 3.
+
+
+Exercice 2 :
+
+1) (car(cdr(car(cdr(cdr '(c e (d a) f))))))
+
+2) (car(car(car(cdr '((x y)((a) b))))))
+
+Exercice 3 :
+Arg 1           Arg 2    Append        		list    		 cons
+
+(a b)           (c d)    (A B C D)    		((A B) (C D))   	 ((A B) C D)
+a         	(c d)    a not a list		(A (c d))		 (a c d)
+(a b)     	c	 (a b . c)              ((a b) c)               ((a b) . c)
+((a b)(c d))    (e f)    ((a b)(c d) e f)   (((a b) ( c d)) ( e f))  (((a b) (c d)) e f)
+(a b)		()	 (a b)			((a b) NIL)           ((a b))
+()		(a b)	 (a b)			(NIL (A B))           (NIL A B)
+a		()	 a not a list
