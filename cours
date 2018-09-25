@@ -1,0 +1,27 @@
+(defun findAll (fct l)
+	(COND ((null l) nil)
+	((funcall fct(car l))(cons(car l)(findall fct(cdr l))))
+	(T(findall fct(cdr l)))
+)
+)
+
+(defun linfan (n l)
+	(remove-if-not(lambda(x)(< x n))l)
+)
+
+(defun infan(n)	  ; renvoie une fonction
+	(lambda(x)(< x n))
+)
+
+(defun linfan2( n l)
+	(remove-if-not(infan n) l )
+)
+
+(defun multnum(l)
+	(cond ((null l) 1)
+		((Numberp (car l))(apply '* ((car l)(multnum (cdr l)))))
+		(T (multnum (cdr l)))
+	)
+)
+
+
