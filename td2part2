@@ -1,0 +1,150 @@
+(defun left(l)
+	(list (inverse01 (car l))  (inverse01 (cadr l)) (caddr l) (cadddr l))
+)
+
+(defun middle(l)
+	(list (car l) (inverse01 (cadr l)) (inverse01 (caddr l )) (cadddr l))
+)
+
+
+(defun right(l)
+	(list (car l)  (cadr l) (inverse01 (caddr l)) (inverse01 (cadddr l)))
+)
+
+
+(defun inverse01(x)
+	(if (eq 1 x) 0 1)
+)
+
+(defun one(l)
+	(etatPossible 'a 'd (list (cadr l) (car l) (caddr l) (cadddr l)))
+)
+
+(defun three(l)
+	(etatPossible 'a 'd (list (car l) (caddr l) (cadr l) (cadddr l)))
+)
+
+(defun four(l)
+	(etatPossible 'a 'd (list (cadr l) (cadddr l) (caddr l) (cadr l)))
+)
+
+(defun etatPossible(x y l)
+	(if(member y (member x l)) l NIL)
+)
+
+(defun listesDifferentes(lAvant lApres)
+	(if (not (equal lAvant lApres)) lApres NIL)
+)
+
+(defun transformA(x l)
+    	(listesDifferentes l (list x (cadr l) (caddr l)))
+)
+
+(defun 1a(l)
+	(transformA '1 l)
+)
+
+(defun 2a(l)
+	(transformA '2 l)
+)
+
+(defun 3a(l)
+    (transformA '3 l)
+)
+
+(defun xDifferentDeA(x l)
+	(if (eq x (car l) NIL l))
+)
+
+(defun xDifferentDeB(x l)
+	(if (eq x (car l) NIL l))
+)
+
+(defun transformB(x l)
+	(if (xDifferentDeA (cadr l)) (xDifferentDeA x (listesDifferentes l (list (car l) 1 (caddr l)))) NIL )
+)
+
+(defun 1b(l)
+	(transformB '1 l)
+)
+
+(defun 2b(l)
+	(transformB '2 l)
+)
+
+(defun 3b(l)
+	(transformB '3 l)
+)
+
+(defun transformC(x l)
+
+)
+
+(defun 1c(l)
+	(transformC '1 l)
+)
+
+(defun 2c(l)
+	(transformC '2 l)
+)
+
+(defun 3c(l)
+	(transformC '3 l)
+)
+
+
+
+(defun feature(node)
+  (get node 'feature))
+
+(defun father(node)
+  (get node 'father))
+
+(defun operator(node)
+  (get node 'operator))
+
+(defun putprop (symb val prop)
+  (setf (get symb prop) val))
+
+
+(defun set-node(node feat-node  father-node op)
+        (putprop node feat-node  'feature)
+        (putprop node father-node 'father)
+        (putprop node op 'operator)
+      node)
+
+
+(defun new-node(node op father-node)
+    (let ((feat (funcall op (feature father-node))))
+    (if feat (set-node node feat father-node op)
+         NIL)
+))
+
+(defun children(node lop)
+	(Cond ((null lop) NIL)
+	((null (funcall (car lop) (feature node))) (children node (cdr lop)))
+	(T (cons (new-node ( gensym) (car lop) node)(children node (cdr lop))))
+)
+)
+
+(defun childrenmapcar(node lop)
+	(remove NIL (mapcar(lambda(x) (funcall 'new-node ((gensym) x node)))
+)
+;(feature (car l1)) = (0 1 0 1)
+;(feature (cadr l1)) 
+;(feature (caddr l1))		=…
+;(father (car l1))		= g100
+;(father (cadr l1)) 		= g100
+;(father (caddr l1)) 
+;(operator (car l1))		= left
+;(operator (cadr l1))		= …
+;(operator (caddr l1))		= …
+
+(defun seen(node lnode)
+
+)
+
+(defun new-open
+)
+;faire une fonction eliminate 
+;
