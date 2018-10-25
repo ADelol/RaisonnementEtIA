@@ -1,0 +1,95 @@
+(defun left(l)
+	(list (inverse01 (car l))  (inverse01 (cadr l)) (caddr l) (cadddr l))
+)
+
+(defun middle(l)
+	(list (car l) (inverse01 (cadr l)) (inverse01 (caddr l )) (cadddr l))
+)
+
+
+(defun right(l)
+	(list (car l)  (cadr l) (inverse01 (caddr l)) (inverse01 (cadddr l)))
+)
+
+
+(defun inverse01(x)
+	(if (eq 1 x) 0 1)
+)
+
+(defun one(l)
+	(etatPossible 'a 'd (list (cadr l) (car l) (caddr l) (cadddr l)))
+)
+
+(defun three(l)
+	(etatPossible 'a 'd (list (car l) (caddr l) (cadr l) (cadddr l)))
+)
+
+(defun four(l)
+	(etatPossible 'a 'd (list (cadr l) (cadddr l) (caddr l) (cadr l)))
+)
+
+(defun etatPossible(x y l)
+	(if(member y (member x l)) l NIL)
+)
+
+(defun listesDifferentes(lAvant lApres)
+	(if (not (equal lAvant lApres)) lApres NIL)
+)
+
+(defun transformA(x l)
+    	(listesDifferentes l (list x (cadr l) (caddr l)))
+)
+
+(defun 1a(l)
+	(transformA '1 l)
+)
+
+(defun 2a(l)
+	(transformA '2 l)
+)
+
+(defun 3a(l)
+    (transformA '3 l)
+)
+
+(defun xDifferentDeA(x l)
+	(if (eq x (car l) NIL l))
+)
+
+(defun xDifferentDeB(x l)
+	(if (eq x (car l) NIL l))
+)
+
+(defun transformB(x l)
+	(if (xDifferentDeA (cadr l)) (xDifferentDeA x (listesDifferentes l (list (car l) 1 (caddr l)))) NIL )
+)
+
+(defun 1b(l)
+	(transformB '1 l)
+)
+
+(defun 2b(l)
+	(transformB '2 l)
+)
+
+(defun 3b(l)
+	(transformB '3 l)
+)
+
+(defun transformC(x l)
+
+)
+
+(defun 1c(l)
+	(transformC '1 l)
+)
+
+(defun 2c(l)
+	(transformC '2 l)
+)
+
+(defun 3c(l)
+	(transformC '3 l)
+)
+
+
